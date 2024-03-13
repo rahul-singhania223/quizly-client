@@ -23,7 +23,7 @@ const VerifyPage = () => {
 
   const handleSubmit = async (data: any) => {
     try {
-      if (!action) return;
+      if (!action || !email) return;
 
       setLoading(true);
 
