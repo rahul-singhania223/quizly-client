@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useParams } from "next/navigation";
 
 import {
   Form,
@@ -16,10 +17,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-import { useParams, useRouter } from "next/navigation";
 import { createNewQuestion, updateQuestion } from "@/actions/question";
 import Loader from "./model/loader";
-import { Question } from "@prisma/client";
+import { Question } from "@/types";
 
 interface QuestionFormProps {
   initialData?: Question;
