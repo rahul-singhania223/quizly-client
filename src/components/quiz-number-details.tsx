@@ -15,6 +15,8 @@ import { Quiz } from "@/types";
 import { useUser } from "@/hooks/use-user";
 import { useToast } from "./ui/use-toast";
 import { saveQuiz, unsaveQuiz } from "@/actions/saved";
+import { useShare } from "@/hooks/use-share-model";
+import { usePathname } from "next/navigation";
 
 interface NumberDetailsProps {
   likes: number;
@@ -30,8 +32,11 @@ const NumberDetails: React.FC<NumberDetailsProps> = ({
   quiz,
 }) => {
   const { user } = useUser();
+  const { onOpen } = useShare();
 
   const [isSaved, setIsSaved] = useState(false);
+
+  const pathname = usePathname();
 
   useEffect(() => {
     if (user?.saved_quizes && quiz) {
@@ -107,6 +112,7 @@ const NumberDetails: React.FC<NumberDetailsProps> = ({
             </DropdownMenuItem>
             <DropdownMenuItem>
               <Button
+                onClick={() => onOpen(quiz)}
                 variant={"ghost"}
                 className="text-sm text-muted-foreground flex items-center gap-2 h-fit p-0"
               >

@@ -119,6 +119,8 @@ export const updateQuiz = async (data: QuizFormData) => {
 export const getTopQuizes = async () => {
   try {
     const response = await axios.get(`${server}/quizes?type=top`);
+
+    return response.data;
   } catch (error: any) {
     console.log("[Couldn't get top quizes]", error);
     return [];

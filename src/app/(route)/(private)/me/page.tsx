@@ -60,10 +60,7 @@ const UserPage = () => {
               {
                 <div>
                   {user?.image_url ? (
-                    <Avatar
-                      className="w-20 h-20"
-                      imageUrl="https://yt3.ggpht.com/1FEdfq3XpKE9UrkT4eOc5wLF2Bz-42sskTi0RkK4nPh4WqCbVmmrDZ5SVEV3WyvPdkfR8sw2=s68-c-k-c0x00ffffff-no-rj"
-                    />
+                    <Avatar className="w-20 h-20" imageUrl={user.image_url} />
                   ) : (
                     <div className="w-20 h-20 bg-green-600 rounded-full grid place-items-center text-xl">
                       {user?.name.slice(0, 1)}

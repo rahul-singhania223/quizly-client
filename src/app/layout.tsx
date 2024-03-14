@@ -2,6 +2,7 @@ import Footer from "@/components/footer";
 import Navbar from "@/components/nav-bar";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
+import ModelProvider from "@/provider/model-provider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -27,6 +28,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <ModelProvider />
           <Toaster />
           <Navbar />
           {children}

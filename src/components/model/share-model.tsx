@@ -1,0 +1,78 @@
+"use client";
+
+import { useShare } from "@/hooks/use-share-model";
+import whatsappLogo from "@/../../public/assets/whatsapp-logo.png";
+import Image from "next/image";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
+import { X } from "lucide-react";
+import { useToast } from "../ui/use-toast";
+
+const ShareModel = () => {
+  const { open, onClose, quiz } = useShare();
+
+  const { toast } = useToast();
+
+  if (!open) return null;
+
+  const quizPlayLink = location.origin + "/play/" + quiz?.id;
+
+  const handleWhatsappShare = () => {
+    const encodedText = encodeURIComponent(`Let's solve some questions - `);
+
+    const whatsAppUrl = `https://api.whatsapp.com/send?text=${encodedText} ${quizPlayLink}`;
+
+    window.open(whatsAppUrl, "_blank");
+  };
+
+  const onCopy = () => {
+    window.navigator.clipboard.writeText(quizPlayLink);
+
+    toast({
+      title: "Link copied to the clipboard",
+    });
+  };
+
+  const options = [
+    {
+      title: "whatsApp",
+      image: whatsappLogo,
+      onShare: handleWhatsappShare,
+    },
+  ];
+
+  return (
+    <div className="fixed z-30 inset-0 bg-black/30 flex items-center justify-center">
+      <div className="p-5 py-7 border rounded-lg w-full max-w-md bg-background relative mx-3">
+        <h2 className="text-lg font-semibold">Share With</h2>
+        <div className="mt-3 flex gap-3">
+          {options.map((option, index) => (
+            <>
+              <div
+                onClick={option.onShare}
+                className="p-2 shadow-md hover:ring-1 w-fit rounded-lg"
+                key={index}
+              >
+                <Image src={option.image} alt="logo" width={40} height={40} />
+              </div>
+            </>
+          ))}
+        </div>
+        <div className="flex gap-4 items-center mt-5">
+          <Input value={quizPlayLink} />
+          <Button onClick={onCopy}>Copy link</Button>
+        </div>
+
+        <Button
+          onClick={onClose}
+          variant={"ghost"}
+          className="absolute top-2 right-2 p-2 h-fit"
+        >
+          <X size={14} />
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default ShareModel;

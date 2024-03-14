@@ -1,48 +1,36 @@
-"use client";
-
-import { useEffect, useState } from "react";
-
-import { getQuestionsByQuizId } from "@/actions/question";
-import PageLoader from "@/components/page-loader";
-import PlayCarousel from "@/components/play-carousel";
 import MaxWidthWrapper from "@/components/ui/max-width-wrapper";
-import { Question } from "@/types";
-import Loader from "@/components/model/loader";
+import PlayQuizPageComponet from "@/components/pages/play-quiz-page";
+import { Metadata, ResolvingMetadata } from "next";
+import { getQuizById } from "@/actions/quiz";
+import { Quiz } from "@/types";
 
-const PlayQuizPage = ({ params }: { params: { quizId: string } }) => {
+interface Props {
+  params: { quizId: string };
+}
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
   const quizId = params.quizId;
 
-  const [questions, setQuestions] = useState<Question[]>([]);
-  const [loading, setLoading] = useState(false);
+  const quiz = (await getQuizById(quizId)) as Quiz;
 
-  useEffect(() => {
-    const getQuestionsData = async () => {
-      try {
-        setLoading(true);
+  return {
+    title: quiz.title,
+    openGraph: {
+      images: [quiz.thumbnail],
+    },
+  };
+}
 
-        const data = await getQuestionsByQuizId(quizId, true);
-
-        setQuestions(data);
-      } catch (error: any) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (quizId && questions.length === 0) {
-      getQuestionsData();
-    }
-  }, [quizId, questions]);
-
-  if (loading) return <PageLoader />;
-
+const PlayQuizPage = ({ params }: { params: { quizId: string } }) => {
   return (
-    <MaxWidthWrapper>
-      <div className="">
-        <PlayCarousel quiz_id={quizId} questions={questions} />
-      </div>
-    </MaxWidthWrapper>
+    <>
+      <MaxWidthWrapper>
+        <PlayQuizPageComponet quizId={params.quizId} />
+      </MaxWidthWrapper>
+    </>
   );
 };
 
