@@ -1,6 +1,5 @@
 "use client";
 
-import axios from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -23,7 +22,6 @@ import MaxWidthWrapper from "@/components/ui/max-width-wrapper";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
-import { server } from "@/constants";
 import { useUser } from "@/hooks/use-user";
 import { User } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
