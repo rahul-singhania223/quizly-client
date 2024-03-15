@@ -63,7 +63,7 @@ const SignInForm = () => {
         description: "Authenticated successfully",
       });
 
-      location.href = "/";
+      // location.href = "/";
     } catch (error: any) {
       toast({
         title: "Oops!",
