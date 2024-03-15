@@ -14,9 +14,9 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
     return <PageLoader />;
   }
 
-  if (status === "AUTHENTICATED") {
-    return redirect("/");
-  }
+  // if (status === "AUTHENTICATED") {
+  //   return redirect("/");
+  // }
 
   return (
     <div className="flex items-center justify-center h-full md:max-w-screen-sm lg:max-w-none mx-auto">

@@ -8,7 +8,6 @@ import { useUser } from "@/hooks/use-user";
 import { redirect, usePathname } from "next/navigation";
 import PageLoader from "@/components/page-loader";
 import LandingPageLoader from "@/components/landing-page-loader";
-import { authUser } from "@/actions/user";
 
 const HomeLayout = ({ children }: { children: React.ReactNode }) => {
   const { status } = useUser();
