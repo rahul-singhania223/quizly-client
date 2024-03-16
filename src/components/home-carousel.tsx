@@ -6,8 +6,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import PlayButton from "@/components/ui/play-button";
 import NumberDetails from "@/components/quiz-number-details";
@@ -25,12 +23,12 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ quizes }) => {
             <div className=" aspect-[3/1.5] md:aspect-[3/1.1] lg:aspect-[5/1] rounded-md p-3 relative">
               <div className="max-w-[70%]">
                 <h1 className="text-xl font-semibold">
-                  {quiz.title.length > 30
-                    ? `${quiz.title.slice(0, 30)}...`
+                  {quiz?.title?.length > 30
+                    ? `${quiz?.title?.slice(0, 30)}...`
                     : quiz.title}
                 </h1>
                 <p className="font-light mt-3 text-muted-foreground">
-                  {quiz.description.slice(0, 50) + "..."}
+                  {quiz?.description?.slice(0, 50) + "..."}
                 </p>
                 <div className="absolute bottom-4">
                   <PlayButton quiz_id={quiz.id} />

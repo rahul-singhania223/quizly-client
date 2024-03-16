@@ -40,7 +40,7 @@ const QuizCard: React.FC<QuizCardProps> = ({ quiz, type }) => {
         <div className="flex-1">
           <h4 className="text-regular text-semibold">
             {quiz.title.length > 50
-              ? `${quiz.title.slice(0, 50)}...`
+              ? `${quiz?.title?.slice(0, 50)}...`
               : quiz.title}
           </h4>
           <p className="text-sm text-muted-foreground mt-1">

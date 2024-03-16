@@ -14,7 +14,7 @@ export const getAuthorById = async (authorId: string) => {
 
 export const getTopAuthors = async () => {
   try {
-    const response = await axios.get(`${server}/author`);
+    const response = await axios.get(`${server}/author/type=top`);
 
     return response.data;
   } catch (err: any) {
