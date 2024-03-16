@@ -20,7 +20,7 @@ const ShareModel = () => {
   const handleWhatsappShare = () => {
     const encodedText = encodeURIComponent(`Let's solve some questions - `);
 
-    const whatsAppUrl = `https://api.whatsapp.com/send?text=${encodedText} ${quizPlayLink}`;
+    const whatsAppUrl = `whatsapp://send?text=${encodedText} ${quizPlayLink}`;
 
     window.open(whatsAppUrl, "_blank");
   };
