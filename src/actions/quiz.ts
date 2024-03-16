@@ -103,13 +103,12 @@ export const createNewQuiz = async (data: QuizFormData) => {
   }
 };
 
-export const updateQuiz = async (data: QuizFormData) => {
+export const updateQuiz = async (quizId: string, data: QuizFormData) => {
   try {
-    const response = await axios.patch(`${server}/quizes/${data.id}`, data, {
+    const response = await axios.patch(`${server}/quizes/${quizId}`, data, {
       withCredentials: true,
     });
 
-    return response;
     return response;
   } catch (error: any) {
     throw error;

@@ -70,9 +70,9 @@ const QuizForm: React.FC<QuizFormProps> = ({ initialData }) => {
       }
 
       if (initialData) {
-        const response = await updateQuiz(data);
+        const response = await updateQuiz(initialData.id, data);
 
-        router.push(`/quizes/${initialData.id}`);
+        router.push(`/quizes/${response?.data?.id}`);
       }
 
       router.refresh();
