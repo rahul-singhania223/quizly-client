@@ -10,6 +10,8 @@ import Avatar from "@/components/avatar";
 import PageLoader from "@/components/page-loader";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
+import Loader from "./model/loader";
+import { Loader2 } from "lucide-react";
 
 interface AuthorCardProps {
   author: Partial<User>;
@@ -18,7 +20,7 @@ interface AuthorCardProps {
 // 1d4da00f-6998-4330-8c27-573716cf3719
 
 const AuthorCard: React.FC<AuthorCardProps> = ({ author }) => {
-  const { user } = useUser();
+  const { user, addUser } = useUser();
   const { toast } = useToast();
 
   const [isFollowing, setIsFollowing] = useState(false);
@@ -51,11 +53,14 @@ const AuthorCard: React.FC<AuthorCardProps> = ({ author }) => {
 
       if (isFollowing) {
         const response = await unfollowAuthor(author.id);
+        addUser(response.data);
         setIsFollowing(false);
       }
 
       if (!isFollowing) {
         const response = await followAuthor(author.id);
+        addUser(response.data);
+
         setIsFollowing(true);
       }
 
@@ -134,7 +139,8 @@ const AuthorCard: React.FC<AuthorCardProps> = ({ author }) => {
         variant={"outline"}
         className="mb-2"
       >
-        {isFollowing ? "Unfollow" : "Follow"}
+        {loading && <Loader2 className="animate-spin" size={15} />}
+        {!loading && isFollowing ? "Unfollow" : "Follow"}
       </Button>
     </div>
   );

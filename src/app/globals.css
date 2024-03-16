@@ -64,6 +64,10 @@ body,
   }
 }
 
+input {
+  @apply !h-12;
+}
+
 /* section {
   @apply mt-8;
 } */

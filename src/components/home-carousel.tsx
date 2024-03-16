@@ -30,7 +30,7 @@ const HomeCarousel: React.FC<HomeCarouselProps> = ({ quizes }) => {
                     : quiz.title}
                 </h1>
                 <p className="font-light mt-3 text-muted-foreground">
-                  {quiz.description.slice(0, 55) + "..."}
+                  {quiz.description.slice(0, 50) + "..."}
                 </p>
                 <div className="absolute bottom-4">
                   <PlayButton quiz_id={quiz.id} />

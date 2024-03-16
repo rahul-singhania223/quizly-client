@@ -22,6 +22,7 @@ import { numberFormatter } from "@/lib/utils";
 import { Quiz, User, History } from "@/types";
 import Loader from "@/components/model/loader";
 import { getMyQuizes } from "@/actions/quiz";
+import QuizCard from "@/components/quiz-card";
 
 const UserPage = () => {
   const [quizes, setQuizes] = useState<Quiz[]>([]);
@@ -51,8 +52,11 @@ const UserPage = () => {
     getData();
   }, []);
 
+  console.log(history);
+
   return (
     <MaxWidthWrapper>
+      {/* user profile */}
       <section>
         <div className="w-full flex justify-center ">
           <div className="w-full max-w-md">
@@ -118,65 +122,42 @@ const UserPage = () => {
         </div>
       )}
 
-      {/* Your quizes */}
-      {quizes.length > 0 && (
+      {/* Your history */}
+      {history.length > 0 && (
         <section>
           <div className="py-5">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-bold">Your quizes</h2>{" "}
+              <h2 className="text-xl font-bold">Your History</h2>{" "}
             </div>
             <Carousel className="w-full mt-6">
               <CarouselContent>
-                {quizes.map((quiz) => (
+                {history.map((history) => (
                   <CarouselItem
                     className="flex items-center justify-center  basis-2/3 lg:basis-2/6 mr-2"
-                    key={quiz.id}
+                    key={history.id}
                   >
-                    <div className="w-full h-full flex flex-col ">
-                      <div className="w-full aspect-video flex-1 relative rounded-lg overflow-hidden group">
-                        <Image
-                          className="object-cover"
-                          src={quiz.thumbnail}
-                          alt="thumbnail"
-                          fill
-                        />
-
-                        <div className="absolute inset-0 bg-black/60 items-center justify-center gap-3 hidden group-hover:flex">
-                          <Button
-                            className="text-xs bg-transparent"
-                            variant={"outline"}
-                            onClick={() =>
-                              router.push(`/quizes/${quiz.id}/details`)
-                            }
-                          >
-                            <Edit size={15} className="mr-1" />
-                            Edit
-                          </Button>
+                    <div className="w-full relative aspect-video rounded-md overflow-hidden">
+                      <Image src={history.quiz.thumbnail} alt="" fill />
+                      <div className="bg-black/70 absolute inset-0 flex items-center justify-center">
+                        <div className="flex items-center flex-col gap-4">
+                          <div className="flex items-center gap-4">
+                            <div className="flex gap-2 items-center">
+                              <span className="text-sm text-muted-foreground">
+                                Score:
+                              </span>
+                              <span className="text-lg font-semibold text-white ">
+                                {history.points} / {history.quiz.questionCount}
+                              </span>
+                            </div>
+                          </div>
                           <Button
                             onClick={() =>
-                              router.push(`/quizes/${quiz.id}/question/new`)
+                              router.push(`/play/${history.quiz_id}`)
                             }
-                            className="text-xs bg-transparent"
-                            variant={"outline"}
                           >
-                            <Plus size={15} className="mr-1" />
-                            Add question
+                            Play again
                           </Button>
                         </div>
-                      </div>
-                      <div className="pt-1 flex justify-between">
-                        <div>
-                          <h3 className="">{quiz.title}</h3>
-                        </div>
-                        <PlayButton quiz_id={quiz.id} />
-                      </div>
-                      <div className=" pt-2">
-                        <NumberDetails
-                          quiz={quiz}
-                          questions={quiz.questionCount}
-                          likes={quiz.likes_count}
-                          plays={quiz.plays_count}
-                        />
                       </div>
                     </div>
                   </CarouselItem>
@@ -187,36 +168,13 @@ const UserPage = () => {
         </section>
       )}
 
-      {/* Your history */}
-      {history.length > 0 && (
+      {/* Your quizes */}
+      {quizes.length > 0 && (
         <section className="mt-2 mb-10">
-          <h2 className="text-xl font-bold">History</h2>
+          <h2 className="text-xl font-bold">Your quizes</h2>
           <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-4">
-            {history.map((history) => (
-              <div key={history.id}>
-                <div className="w-full relative aspect-video rounded-md overflow-hidden">
-                  <Image src={history.quiz.thumbnail} alt="" fill />
-                  <div className="bg-black/70 absolute inset-0 flex items-center justify-center">
-                    <div className="flex items-center flex-col gap-4">
-                      <div className="flex items-center gap-4">
-                        <div className="flex gap-2 items-center">
-                          <span className="text-sm text-muted-foreground">
-                            Score:
-                          </span>
-                          <span className="text-lg font-semibold text-white ">
-                            {history.points} / {history.quiz.questionCount}
-                          </span>
-                        </div>
-                      </div>
-                      <Button
-                        onClick={() => router.push(`/play/${history.quiz_id}`)}
-                      >
-                        Play again
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            {quizes.map((quiz) => (
+              <QuizCard key={quiz.id} type={"PERSONAL"} quiz={quiz} />
             ))}
           </div>
         </section>

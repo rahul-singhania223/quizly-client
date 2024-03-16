@@ -64,9 +64,7 @@ const SignUpForm = () => {
 
       const response = await registerWithEmail(data);
 
-      if (response.data.success) {
-        router.push(`/auth/verify?email=${data.email}&action=sign-up`);
-      }
+      location.href = "/";
     } catch (error: any) {
       const errorMessage = error?.response?.data || error.message;
 
@@ -125,7 +123,7 @@ const SignUpForm = () => {
             </FormItem>
           )}
         />
-        <Button disabled={loading} className="w-full" type="submit">
+        <Button disabled={loading} className="w-full h-12" type="submit">
           {loading ? <Loader /> : "Submit"}
         </Button>
 

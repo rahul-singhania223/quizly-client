@@ -38,14 +38,14 @@ const QuestionPlayCard: React.FC<QuestionPlayCardProps> = ({
   return (
     <Card className="h-full border-none relative">
       <CardContent className="w-full p-0 border-none h-full flex flex-col justify-between ">
-        <div className="overflow-y-auto">
+        <div className="overflow-y-auto absolute top-0 left-0 right-0">
           <h2 className="">{question.title}</h2>
-          <p className="text-muted-foreground text-right text-xs pt-2">
+          <p className="text-muted-foreground text-right text-sm pt-2">
             {question.exams}
           </p>
         </div>
 
-        <div className="space-y-5 lg:relative">
+        <div className="space-y-5 bg-background absolute bottom-0 left-0 right-0">
           {options.map((option, index) => (
             <div
               onClick={(e) =>

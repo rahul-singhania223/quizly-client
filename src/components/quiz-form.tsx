@@ -191,7 +191,7 @@ const QuizForm: React.FC<QuizFormProps> = ({ initialData }) => {
           )}
         />
 
-        <Button className="w-full py-6 -mb-10 md:w-fit" disabled={loading}>
+        <Button className="w-full h-12 py-6 -mb-10 md:w-fit" disabled={loading}>
           {loading ? <Loader /> : "Submit"}
         </Button>
       </form>

@@ -20,6 +20,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { createNewQuestion, updateQuestion } from "@/actions/question";
 import Loader from "./model/loader";
 import { Question } from "@/types";
+import { Textarea } from "./ui/textarea";
 
 interface QuestionFormProps {
   initialData?: Question;
@@ -74,6 +75,8 @@ const QuestionForm: React.FC<QuestionFormProps> = ({ initialData }) => {
         );
       }
 
+      form.reset();
+
       toast({
         title: successMessage,
       });
@@ -103,7 +106,7 @@ const QuestionForm: React.FC<QuestionFormProps> = ({ initialData }) => {
             <FormItem>
               <FormLabel>Title</FormLabel>
               <FormControl>
-                <Input
+                <Textarea
                   placeholder="eg. mathematics quiz question?"
                   {...field}
                 />
@@ -120,7 +123,7 @@ const QuestionForm: React.FC<QuestionFormProps> = ({ initialData }) => {
             <FormItem>
               <FormLabel>Options</FormLabel>
               <FormControl>
-                <Input placeholder="eg. 45 | 56 | 23 | 34" {...field} />
+                <Input placeholder="eg. 45 56 23 34" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -158,7 +161,7 @@ const QuestionForm: React.FC<QuestionFormProps> = ({ initialData }) => {
           )}
         />
 
-        <Button className="w-full py-6 -mb-10 md:w-fit" disabled={loading}>
+        <Button className="w-full h-12 py-6 -mb-10 md:w-fit" disabled={loading}>
           {loading ? <Loader /> : "Submit"}
         </Button>
       </form>

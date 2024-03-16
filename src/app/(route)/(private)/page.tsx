@@ -29,7 +29,7 @@ const HomePage = async () => {
                   {author && (
                     <Avatar
                       author={author}
-                      className="w-14 h-14"
+                      className="w-16 h-16"
                       imageUrl={author.image_url}
                     />
                   )}

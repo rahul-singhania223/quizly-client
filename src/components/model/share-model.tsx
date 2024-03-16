@@ -50,7 +50,7 @@ const ShareModel = () => {
             <>
               <div
                 onClick={option.onShare}
-                className="p-2 shadow-md hover:ring-1 w-fit rounded-lg"
+                className="p-2 shadow-md ring-1 w-fit rounded-lg"
                 key={index}
               >
                 <Image src={option.image} alt="logo" width={40} height={40} />
@@ -58,7 +58,7 @@ const ShareModel = () => {
             </>
           ))}
         </div>
-        <div className="flex gap-4 items-center mt-5">
+        <div className="flex flex-col gap-4 items-center mt-5">
           <Input value={quizPlayLink} />
           <Button onClick={onCopy}>Copy link</Button>
         </div>
@@ -68,7 +68,7 @@ const ShareModel = () => {
           variant={"ghost"}
           className="absolute top-2 right-2 p-2 h-fit"
         >
-          <X size={14} />
+          <X size={20} />
         </Button>
       </div>
     </div>

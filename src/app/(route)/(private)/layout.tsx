@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 
 import BottomNav from "@/components/bottom-nav";
 import Sidebar from "@/components/sidebar";

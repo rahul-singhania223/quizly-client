@@ -23,6 +23,8 @@ export const saveQuiz = async (quizId: string) => {
       { quizId },
       { withCredentials: true }
     );
+
+    return response;
   } catch (error: any) {
     throw error;
   }
@@ -35,6 +37,8 @@ export const unsaveQuiz = async (quizId: string) => {
       { quizId },
       { withCredentials: true }
     );
+
+    return response;
   } catch (error: any) {
     throw error;
   }

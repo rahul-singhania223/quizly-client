@@ -96,19 +96,11 @@ const PlayCarousel: React.FC<PlayCarouselProps> = ({ questions, quiz_id }) => {
               key={question.id}
               className="w-full h-full max-w-screen-md mx-auto md:basis-1"
             >
-              <div className="h-full flex flex-col md:h-[calc(100vh-180px)] lg:h-[calc(100vh-120px)]">
+              <div className="h-full flex flex-col md:h-[calc(100vh-180px)] lg:h-[calc(100vh-130px)]">
                 <div className="flex items-center">
                   <span>
                     {index + 1}/{questions.length}
                   </span>
-                  <Button
-                    onClick={restartQuiz}
-                    className="ml-auto flex items-center gap-1"
-                    variant={"outline"}
-                  >
-                    <RotateCcw size={15} />
-                    Restart
-                  </Button>
                 </div>
                 <QuestionPlayCard
                   loading={loading}

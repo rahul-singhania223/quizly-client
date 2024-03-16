@@ -8,6 +8,8 @@ export const followAuthor = async (authorId: string) => {
       {},
       { withCredentials: true }
     );
+
+    return response;
   } catch (error: any) {
     throw error;
   }
@@ -20,6 +22,8 @@ export const unfollowAuthor = async (authorId: string) => {
 
       { withCredentials: true }
     );
+
+    return response;
   } catch (error: any) {
     throw error;
   }

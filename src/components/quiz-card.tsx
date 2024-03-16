@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -5,15 +7,17 @@ import Image from "next/image";
 import { Quiz } from "@/types";
 import Avatar from "./avatar";
 import NumberDetails from "./quiz-number-details";
+import { updatePlayCount } from "@/actions/play";
 
 interface QuizCardProps {
   quiz: Quiz;
+  type?: "PERSONAL" | "OTHERS";
 }
 
-const QuizCard: React.FC<QuizCardProps> = ({ quiz }) => {
+const QuizCard: React.FC<QuizCardProps> = ({ quiz, type }) => {
   return (
     <div className="shadow hover:ring-2 mb-10 relative rounded-lg overflow-hidden flex flex-col w-full">
-      <Link href={`/play/${quiz.id}`}>
+      <Link onClick={() => updatePlayCount(quiz.id)} href={`/play/${quiz.id}`}>
         <div className="w-full flex-1 relative aspect-video">
           <Image
             className="w-auto h-auto object-cover"
@@ -28,7 +32,7 @@ const QuizCard: React.FC<QuizCardProps> = ({ quiz }) => {
         {quiz.author && (
           <Avatar
             author={quiz.author}
-            className=""
+            className="w-14 h-14"
             imageUrl={quiz.author?.image_url}
           />
         )}
@@ -43,6 +47,7 @@ const QuizCard: React.FC<QuizCardProps> = ({ quiz }) => {
             {quiz.author?.name}
           </p>
           <NumberDetails
+            type={type}
             quiz={quiz}
             likes={quiz.likes_count}
             plays={quiz.plays_count}

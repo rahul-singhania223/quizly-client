@@ -114,7 +114,7 @@ const SignInForm = () => {
           Forgot password?
         </Link>
 
-        <Button disabled={loading} className="w-full" type="submit">
+        <Button disabled={loading} className="w-full h-12" type="submit">
           {loading ? <Loader /> : "Submit"}
         </Button>
 

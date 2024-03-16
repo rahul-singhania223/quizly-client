@@ -39,7 +39,7 @@ const Avatar: React.FC<AvatarProps> = ({ imageUrl, className, author }) => {
       )}
 
       {!imageUrl && (
-        <div className="w-10 h-10 bg-green-700 rounded-full flex items-center justify-center">
+        <div className="w-full h-full bg-green-600 text-xl rounded-full flex items-center justify-center">
           {author?.name?.slice(0, 1)}
         </div>
       )}

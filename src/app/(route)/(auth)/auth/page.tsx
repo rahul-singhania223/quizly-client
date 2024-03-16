@@ -3,6 +3,8 @@
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import googleLogo from "../../../../../public/assets/google-logo.png";
 
 const AuthPage = () => {
   const loginWithGoogle = () => {
@@ -38,9 +40,10 @@ const AuthPage = () => {
         <Link href={"#"} className={"w-full"}>
           <Button
             onClick={loginWithGoogle}
-            className="py-6 w-full"
+            className="py-6 w-full gap-3 flex items-center"
             variant={"outline"}
           >
+            <Image src={googleLogo} alt="google-logo" width={20} height={20} />
             Continue with Google
           </Button>
         </Link>

@@ -45,7 +45,7 @@ const AlertModel: React.FC<AlertModelProps> = ({ children, onDelete }) => {
             className="bg-red-400 text-white hover:bg-red-500"
             onClick={onDelete}
           >
-            Continue
+            Confirm
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
