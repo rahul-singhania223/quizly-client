@@ -6,6 +6,8 @@ import { Quiz, User } from "@/types";
 import { getFeedQuizes, getTopQuizes } from "@/actions/quiz";
 import { getTopAuthors } from "@/actions/author";
 
+export const revalidate = 0;
+
 const HomePage = async () => {
   const quizes = (await getFeedQuizes()) as Quiz[];
 

@@ -3,6 +3,8 @@
 import { server } from "@/constants";
 import axios from "axios";
 
+export const revalidate = 0;
+
 export const getSavedQuizes = async () => {
   try {
     const response = await axios.get(`${server}/saved`, {

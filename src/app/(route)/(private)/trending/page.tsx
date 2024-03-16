@@ -4,6 +4,8 @@ import QuizCard from "@/components/quiz-card";
 import MaxWidthWrapper from "@/components/ui/max-width-wrapper";
 import { Quiz } from "@/types";
 
+export const revalidate = 0;
+
 const TrendingPage = async () => {
   const quizes = (await getTrendingQuizes()) as Quiz[];
 
