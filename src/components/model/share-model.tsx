@@ -1,12 +1,12 @@
 "use client";
 
 import { useShare } from "@/hooks/use-share-model";
-import whatsappLogo from "@/../../public/assets/whatsapp-logo.png";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { X } from "lucide-react";
 import { useToast } from "../ui/use-toast";
+import { WhatsApp } from "@/icons/whatsapp";
 
 const ShareModel = () => {
   const { open, onClose, quiz } = useShare();
@@ -36,7 +36,7 @@ const ShareModel = () => {
   const options = [
     {
       title: "whatsApp",
-      image: whatsappLogo,
+      icon: <WhatsApp className="w-8 h-8" />,
       onShare: handleWhatsappShare,
     },
   ];
@@ -53,7 +53,7 @@ const ShareModel = () => {
                 className="p-2 shadow-md ring-1 w-fit rounded-lg"
                 key={index}
               >
-                <Image src={option.image} alt="logo" width={40} height={40} />
+                <span>{option.icon}</span>
               </div>
             </>
           ))}

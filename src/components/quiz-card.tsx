@@ -35,7 +35,7 @@ const QuizCard: React.FC<QuizCardProps> = ({ quiz, type }) => {
         {quiz.author && (
           <Avatar
             author={quiz.author}
-            className="w-14 h-14"
+            className="w-10 h-10"
             imageUrl={quiz.author?.image_url}
           />
         )}
