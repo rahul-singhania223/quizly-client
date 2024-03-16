@@ -45,7 +45,7 @@ const QuestionPlayCard: React.FC<QuestionPlayCardProps> = ({
           </p>
         </div>
 
-        <div className="space-y-5 bg-background absolute bottom-0 left-0 right-0">
+        <div className="space-y-5 absolute bottom-0 left-0 right-0">
           {options.map((option, index) => (
             <div
               onClick={(e) =>

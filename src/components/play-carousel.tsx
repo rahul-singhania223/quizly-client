@@ -83,34 +83,17 @@ const PlayCarousel: React.FC<PlayCarouselProps> = ({ questions, quiz_id }) => {
         score={score}
       />
 
-      <CarouselContent className="h-[calc(100vh-150px)] lg:h-[calc(100vh-100px)] w-full ">
-        {questions.length === 0 && (
-          <div className="h-full grid place-items-center text-xl text-red-200">
-            No question found
+      <CarouselContent className="h-[calc(100vh-150px)] lg:h-[calc(100vh-100px)] space-y-4 w-full">
+        {questions.map((question) => (
+          <div key={question.id} className="min-h-full py-10 w-full">
+            <QuestionPlayCard
+              loading={loading}
+              question={question}
+              questionCount={questions.length}
+              onAnswerSelect={onAnswerSelect}
+            />
           </div>
-        )}
-
-        {questions.length > 0 &&
-          questions.map((question, index) => (
-            <CarouselItem
-              key={question.id}
-              className="w-full h-full max-w-screen-md mx-auto md:basis-1"
-            >
-              <div className="h-full flex flex-col md:h-[calc(100vh-180px)] lg:h-[calc(100vh-130px)]">
-                <div className="flex items-center">
-                  <span>
-                    {index + 1}/{questions.length}
-                  </span>
-                </div>
-                <QuestionPlayCard
-                  loading={loading}
-                  question={question}
-                  onAnswerSelect={onAnswerSelect}
-                  questionCount={questions.length}
-                />
-              </div>
-            </CarouselItem>
-          ))}
+        ))}
       </CarouselContent>
       <div className="hidden lg:flex -mt-2 gap-3">
         <CarouselNext className="static" />

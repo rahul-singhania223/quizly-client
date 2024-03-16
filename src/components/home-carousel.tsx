@@ -9,12 +9,15 @@ import {
 } from "@/components/ui/carousel";
 import PlayButton from "@/components/ui/play-button";
 import NumberDetails from "@/components/quiz-number-details";
+import PageLoader from "./page-loader";
 
 interface HomeCarouselProps {
   quizes: Quiz[];
 }
 
 const HomeCarousel: React.FC<HomeCarouselProps> = ({ quizes }) => {
+  if (!quizes) return <PageLoader />;
+
   return (
     <Carousel className="">
       <CarouselContent className="-ml-0 gap-3 ">

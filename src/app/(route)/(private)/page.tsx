@@ -13,6 +13,8 @@ const HomePage = async () => {
 
   const topQuizes = (await getTopQuizes()) as Quiz[];
 
+  console.log(topAuthors);
+
   return (
     <MaxWidthWrapper>
       <section className="">

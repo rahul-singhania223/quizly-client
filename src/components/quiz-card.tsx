@@ -8,6 +8,7 @@ import { Quiz } from "@/types";
 import Avatar from "./avatar";
 import NumberDetails from "./quiz-number-details";
 import { updatePlayCount } from "@/actions/play";
+import PageLoader from "./page-loader";
 
 interface QuizCardProps {
   quiz: Quiz;
@@ -15,6 +16,8 @@ interface QuizCardProps {
 }
 
 const QuizCard: React.FC<QuizCardProps> = ({ quiz, type }) => {
+  if (!quiz) return <PageLoader />;
+
   return (
     <div className="shadow hover:ring-2 mb-10 relative rounded-lg overflow-hidden flex flex-col w-full">
       <Link onClick={() => updatePlayCount(quiz.id)} href={`/play/${quiz.id}`}>

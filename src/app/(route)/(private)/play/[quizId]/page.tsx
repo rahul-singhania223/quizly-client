@@ -17,9 +17,14 @@ export async function generateMetadata(
   const quiz = (await getQuizById(quizId)) as Quiz;
 
   return {
+    metadataBase: new URL("http://quizly-raone.vercel.app"),
     title: quiz.title,
     openGraph: {
-      images: [quiz.thumbnail],
+      images: [
+        {
+          url: quiz.thumbnail,
+        },
+      ],
     },
   };
 }

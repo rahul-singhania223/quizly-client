@@ -107,12 +107,12 @@ const SignInForm = () => {
           )}
         />
 
-        <Link
+        {/* <Link
           href={loading ? "" : "/auth/forgot-password"}
           className="text-primary block text-right cursor-pointer text w-fit ml-auto"
         >
           Forgot password?
-        </Link>
+        </Link> */}
 
         <Button disabled={loading} className="w-full h-12" type="submit">
           {loading ? <Loader /> : "Submit"}
