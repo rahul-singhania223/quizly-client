@@ -10,14 +10,14 @@ import PageLoader from "@/components/page-loader";
 import LandingPageLoader from "@/components/landing-page-loader";
 
 const HomeLayout = ({ children }: { children: React.ReactNode }) => {
-  // const { status } = useUser();
+  const { status } = useUser();
 
-  // const pathname = usePathname();
+  const pathname = usePathname();
 
-  // if (status === "UNAUTHENTICATED") return redirect("/auth");
+  if (status === "UNAUTHENTICATED") return redirect("/auth");
 
-  // if (pathname === "/" && status === "LOADING") return <LandingPageLoader />;
-  // if (status === "LOADING") return <PageLoader />;
+  if (pathname === "/" && status === "LOADING") return <LandingPageLoader />;
+  if (status === "LOADING") return <PageLoader />;
 
   return (
     <div className="flex">
